@@ -3,56 +3,10 @@
 #include <ctime>
 using namespace std;
 
-int todoal1(int a[]){
+int todoalx(int a[], int nro){
 	int aux = 0;
 	for(int i=0;i<5;i++) { 
-		if(a[i] == 1){
-			aux = aux + a[i];
-		}
-	}
-	return aux;
-}
-
-int todoal2(int a[]){
-	int aux = 0;
-	for(int i=0;i<5;i++) { 
-		if(a[i] == 2){
-			aux = aux + a[i];
-		}
-	}
-	return aux;
-}
-int todoal3(int a[]){
-	int aux = 0;
-	for(int i=0;i<5;i++) { 
-		if(a[i] == 3){
-			aux = aux + a[i];
-		}
-	}
-	return aux;
-}
-int todoal4(int a[]){
-	int aux = 0;
-	for(int i=0;i<5;i++) { 
-		if(a[i] == 4){
-			aux = aux + a[i];
-		}
-	}
-	return aux;
-}
-int todoal5(int a[]){
-	int aux = 0;
-	for(int i=0;i<5;i++) { 
-		if(a[i] == 5){
-			aux = aux + a[i];
-		}
-	}
-	return aux;
-}
-int todoal6(int a[]){
-	int aux = 0;
-	for(int i=0;i<5;i++) { 
-		if(a[i] == 6){
+		if(a[i] == nro){
 			aux = aux + a[i];
 		}
 	}
@@ -60,7 +14,7 @@ int todoal6(int a[]){
 }
 
 int full(int a[]){
-	if( (todoal1(a)==3 || todoal2(a)==6 || todoal3(a)==9 || todoal4(a)==12 || todoal5(a)==15 || todoal6(a)==18) && (todoal1(a)==2 || todoal2(a)==4 || todoal3(a)==6 || todoal4(a)==8 || todoal5(a)==10 || todoal6(a)==12)){
+	if( (todoalx(a,1)==3 || todoalx(a,2)==6 || todoalx(a,3)==9 || todoalx(a,4)==12 || todoalx(a,5)==15 || todoalx(a,6)==18) && (todoalx(a,1)==2 || todoalx(a,2)==4 || todoalx(a,3)==6 || todoalx(a,4)==8 || todoalx(a,5)==10 || todoalx(a,6)==12)){
 		return 30;
 	}
 	return 0;
@@ -68,7 +22,7 @@ int full(int a[]){
 	
 int poker(int a[]){
 	
-	if(todoal1(a)==4 || todoal2(a)==8 || todoal3(a)==12 || todoal4(a)==16 || todoal5(a)==20 || todoal6(a)==4){
+	if(todoalx(a,1)==4 || todoalx(a,2)==8 || todoalx(a,3)==12 || todoalx(a,4)==16 || todoalx(a,5)==20 || todoalx(a,6)==24){
 		return 40;
 	}
 	return 0;
@@ -109,12 +63,9 @@ int escalera(int a[]){
 
 int generala(int a[]){
 	int puntos = 0;
-	puntos = max(puntos,todoal1(a));
-	puntos = max(puntos,todoal2(a));
-	puntos = max(puntos,todoal3(a));
-	puntos = max(puntos,todoal4(a));
-	puntos = max(puntos,todoal5(a));
-	puntos = max(puntos,todoal6(a));
+	for(int i=0;i<6;i++){
+		puntos = max(puntos,todoalx(a,i+1)
+	}
 	puntos = max(puntos,full(a));
 	puntos = max(puntos,poker(a));
 	puntos = max(puntos,escalera(a));
@@ -122,27 +73,21 @@ int generala(int a[]){
 	return puntos;
 }
 int main(int argc, char *argv[]) {
-	
 	int jugador[5];
 	int pc[5];
 	char tecla;
 	srand(time(NULL));
-	
 	cout << "Presione 'P' para tirar los dados." << endl;
 	tecla = getch();
-	
 	if (tecla == 'P' || tecla == 'p') {
-		
 		for(int i=0;i<5;i++) { 
 			jugador[i] = rand() % 6 + 1;
 		}
-		
 		cout<<"Jugador: "<<endl;
 		for(int i=0;i<5;i++) { 
 			cout<<jugador[i]<<" ";
 		}
 	}
-	
 	int puntaje_j = generala(jugador);
 	cout<<endl;
 	cout<<"Puntos: "<<puntaje_j;
@@ -169,8 +114,6 @@ int main(int argc, char *argv[]) {
 	}else{
 		cout<<"Perdiste, suerte la proxima :(";
 	}
-
-	
 	return 0;
 }
 
