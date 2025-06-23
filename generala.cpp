@@ -64,7 +64,7 @@ int escalera(int a[]){
 int generala(int a[]){
 	int puntos = 0;
 	for(int i=0;i<6;i++){
-		puntos = max(puntos,todoalx(a,i+1)
+		puntos = max(puntos,todoalx(a,i+1);
 	}
 	puntos = max(puntos,full(a));
 	puntos = max(puntos,poker(a));
